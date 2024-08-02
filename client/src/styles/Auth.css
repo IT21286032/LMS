@@ -1,0 +1,73 @@
+/* src/styles/Auth.css */
+.auth-container {
+    max-width: 400px;
+    margin: 5rem auto; /* Center the form vertically */
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .auth-container h2 {
+    text-align: center;
+    margin-bottom: 5rem; /* Increased gap for better spacing */
+  }
+  
+  .auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Increased gap between form elements */
+  }
+  
+  .auth-container form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .auth-container form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .auth-container form input[type="text"],
+  .auth-container form input[type="email"],
+  .auth-container form input[type="password"],
+  .auth-container form input[type="radio"] {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .auth-container form input[type="radio"] {
+    margin-right: 0.5rem;
+  }
+  
+  .auth-container form button {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-container form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .auth-container .error {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .auth-container .radio-group {
+    display: flex;
+    justify-content: space-around;
+  }
+  

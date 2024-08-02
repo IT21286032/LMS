@@ -1,0 +1,55 @@
+/* src/styles/StudentDashboard.css */
+
+.student-dashboard {
+    padding: 20px;
+  }
+  
+  .courses-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .course-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .course-title-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .dashboard-buttons {
+    margin-top: 20px;
+  }
+  

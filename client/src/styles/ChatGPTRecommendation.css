@@ -1,0 +1,102 @@
+/* src/styles/ChatGPTRecommendation.css */
+
+.chatgpt-recommendation {
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2em;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 1em;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .button-container {
+    text-align: center;
+  }
+  
+  .submit-button {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .submit-button:focus {
+    outline: none;
+  }
+  
+  .error, .success {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .error {
+    background-color: #dc3545;
+  }
+  
+  .success {
+    background-color: #28a745;
+  }
+  
+  .recommendations-text {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recommendations-text pre {
+    margin: 0;
+    white-space: pre-wrap; /* Preserve whitespace and new lines */
+    word-wrap: break-word; /* Allow long words to break */
+    font-size: 1em;
+    color: #333;
+  }
+  

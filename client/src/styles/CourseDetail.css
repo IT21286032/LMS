@@ -1,0 +1,54 @@
+/* src/styles/CourseDetail.css */
+
+.course-detail {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .course-detail h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .course-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .course-content {
+    margin-top: 20px;
+  }
+  
+  .course-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .course-detail .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .course-detail .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .success {
+    color: green;
+    margin-bottom: 20px;
+  }
+  
