@@ -5,7 +5,7 @@ import '../../styles/EditCourse.css';
 
 const EditCourse: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [course, setCourse] = useState<any>(null); // Replace `any` with a more specific type if available
+  const [course, setCourse] = useState<any>(null); 
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [instructor, setInstructor] = useState<string>('');

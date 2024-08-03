@@ -19,9 +19,7 @@ const CourseDetail: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');
 
-  // Replace with the actual user ID, possibly from authentication context or state
-  const userId = 'USER_ID'; // Replace with actual user ID from authentication context or state
-
+  const userId = 'USER_ID'; 
   useEffect(() => {
     const fetchCourse = async () => {
       try {

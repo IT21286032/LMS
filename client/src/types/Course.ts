@@ -1,4 +1,3 @@
-// src/types/Course.ts
 export interface Course {
     _id: string;
     title: string;

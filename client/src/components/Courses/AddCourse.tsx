@@ -1,4 +1,3 @@
-// src/pages/AddCourse.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addCourse } from '../../services/courses';
@@ -32,13 +31,13 @@ const AddCourse: React.FC = () => {
       setSuccess('Course added successfully!');
       setError('');
       
-      const role = localStorage.getItem('role'); // Assuming role is stored in localStorage
+      const role = localStorage.getItem('role'); 
       if (role === 'instructor') {
         navigate('/instructor-dashboard');
       } else if (role === 'student') {
         navigate('/student-dashboard');
       } else {
-        navigate('/'); // Default redirect if role is not found
+        navigate('/'); 
       }
     } catch (err) {
       setError('Failed to add course. Please try again.');

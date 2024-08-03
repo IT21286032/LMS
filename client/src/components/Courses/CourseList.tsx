@@ -1,6 +1,6 @@
 import '../../styles/CourseList.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom'; 
 import { getCourses } from '../../services/courses';
 
 interface Course {
@@ -8,9 +8,9 @@ interface Course {
   title: string;
   description: string;
   instructor: string;
-  content?: string; // content is optional
-  displayPicture?: string; // displayPicture is optional
-  enrolledStudents?: string[]; // enrolledStudents is optional
+  content?: string; 
+  displayPicture?: string; 
+  enrolledStudents?: string[];
 }
 
 const CourseList: React.FC = () => {

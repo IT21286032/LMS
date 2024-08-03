@@ -15,7 +15,7 @@ interface Course {
 const EnrolledCourses: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [error, setError] = useState<string>('');
-  const userId = 'USER_ID'; // Replace with actual user ID retrieval logic
+  const userId = 'USER_ID'; 
 
   useEffect(() => {
     const fetchEnrolledCourses = async () => {

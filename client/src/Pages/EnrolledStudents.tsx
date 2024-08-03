@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { User } from '../types/User'; // Assuming you have a User type defined
-import '../styles/EnrolledStudents.css'; // Add your CSS for styling
+import { User } from '../types/User'; 
+import '../styles/EnrolledStudents.css'; 
 
 const EnrolledStudents: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -37,7 +37,7 @@ const EnrolledStudents: React.FC = () => {
           {students.map(student => (
             <li key={student._id}>
               <h3>{student.username}</h3>
-              {/* Add more student details as needed */}
+              {/* Add more student details  */}
             </li>
           ))}
         </ul>

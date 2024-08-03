@@ -1,7 +1,6 @@
-// src/services/auth.ts
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/users'; // Update with your backend URL
+const API_URL = 'http://localhost:5000/api/users'; 
 
 // Register function
 export const register = async (username: string, email: string, password: string, role: string) => {

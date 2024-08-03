@@ -10,7 +10,7 @@ const ChatGPTRecommendation: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setRecommendations(''); // Clear previous recommendations
+    setRecommendations(''); 
 
     try {
       const response = await axios.post<{ recommendations: string }>(

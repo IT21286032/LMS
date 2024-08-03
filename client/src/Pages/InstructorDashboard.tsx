@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getCourses, deleteCourse } from '../services/courses'; // Ensure this is updated to import getCourses
+import { getCourses, deleteCourse } from '../services/courses'; 
 import { Course } from '../types/Course';
 import '../styles/InstructorDashboard.css';
 
@@ -12,7 +12,7 @@ const InstructorDashboard: React.FC = () => {
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const data: Course[] = await getCourses(); // Call getCourses to fetch all courses
+      const data: Course[] = await getCourses(); 
       setCourses(data);
       setError('');
     } catch (error) {
