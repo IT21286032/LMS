@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-// Define the user schema
 const userSchema = new Schema({
   username: {
     type: String,
@@ -23,7 +22,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     enum: ['student', 'instructor'],
-    default: 'student' // Assuming two roles: student and instructor
+    default: 'student' 
   }
 });
 

@@ -1,4 +1,3 @@
-// routes/courses.js
 const express = require('express');
 const {
   createCourse,

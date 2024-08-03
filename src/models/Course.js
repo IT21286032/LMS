@@ -11,7 +11,7 @@ const CourseSchema = new mongoose.Schema({
   },
   instructor: {
     type: mongoose.Schema.Types.ObjectId, // Reference to User model
-    ref: 'User', // Assuming the User model name
+    ref: 'User', 
     required: true,
   },
   content: {
