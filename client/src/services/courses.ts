@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { getToken, getUserId } from './auth';
+import {jwtDecode} from 'jwt-decode';
+
 
 
 const API_URL = 'http://localhost:5000/api/courses'; // Base URL for courses
@@ -19,15 +20,24 @@ export const getCourses = async () => {
     throw error; // Re-throw error to be handled by the caller
   }
 };
-export const getCoursesByInstructor = async () => {
-  const token = getToken();
-  const instructorId = getUserId(); // Get the instructor ID from localStorage
+interface DecodedToken {
+  id: string;
+  // Add other fields if needed
+}
 
-  if (!instructorId) {
-    throw new Error('User ID not found in localStorage');
+const getTokenn = () => localStorage.getItem('token');
+
+export const getCoursesByInstructor = async () => {
+  const token = getTokenn();
+  if (!token) {
+    throw new Error('No token found');
   }
 
   try {
+    // Decode the token to get user information
+    const decoded: DecodedToken = jwtDecode(token);
+    const instructorId = decoded.id;
+
     const response = await axios.get(`${API_URL}/instructor/${instructorId}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -36,7 +46,7 @@ export const getCoursesByInstructor = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching instructor courses:', error);
-    throw error; // Re-throw error to be handled by the caller
+    throw error;
   }
 };
 

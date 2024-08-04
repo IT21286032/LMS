@@ -33,14 +33,24 @@ const EnrolledStudents: React.FC = () => {
       {loading && <p>Loading...</p>}
       {error && <div className="error">{error}</div>}
       {students.length ? (
-        <ul>
-          {students.map(student => (
-            <li key={student._id}>
-              <h3>{student.username}</h3>
-              {/* Add more student details  */}
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              {/* Add more headers if needed */}
+            </tr>
+          </thead>
+          <tbody>
+            {students.map(student => (
+              <tr key={student._id}>
+                <td>{student.username}</td>
+                <td>{student.email}</td>
+                {/* Add more student details if needed */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No students enrolled.</p>
       )}

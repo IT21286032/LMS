@@ -1,5 +1,6 @@
 const OpenAI = require('openai');
 const Course = require('../models/Course');
+const User = require('../models/User');
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -9,20 +10,20 @@ exports.getRecommendations = async (req, res) => {
   const { prompt } = req.body;
 
   try {
-    // Fetch all courses from the database
-    const courses = await Course.find();
+    // Fetch all courses from the database and populate the instructor field
+    const courses = await Course.find().populate('instructor', 'username');
 
     // Prepare a list of course titles, descriptions, and instructors
     const courseData = courses.map(course => ({
       title: course.title,
       description: course.description,
-      instructor: course.instructor,
+      username: course.instructor.username, // Use username from the populated instructor field
     }));
 
     // Create a message for the GPT-3 model with course data
     const message = {
       role: 'user',
-      content: `Here is a list of courses with their descriptions and instructors:\n\n${courseData.map(course => `Title: ${course.title}\nDescription: ${course.description}\nInstructor: ${course.instructor}\n`).join('\n')}Based on the following prompt, recommend some courses from the above mentioned courses. Output the course title and instructor in the format: "Course Title: by Instructor Name". The prompt is: "${prompt}"`,
+      content: `Here is a list of courses with their descriptions and instructors:\n\n${courseData.map(course => `Title: ${course.title}\nDescription: ${course.description}\nInstructor: ${course.username}\n`).join('\n')}Based on the following prompt, recommend some courses from the above mentioned courses. Output the course title and instructor in the format: "Course  : by Instructor Name". The prompt is: "${prompt}"`,
     };
 
     // Log the message for debugging

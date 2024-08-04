@@ -26,7 +26,6 @@ const userSchema = new Schema({
   }
 });
 
-// Pre-save hook to check if email is provided
 userSchema.pre('save', function (next) {
   if (!this.email) {
     return next(new Error('Email is required.'));
@@ -34,7 +33,6 @@ userSchema.pre('save', function (next) {
   next();
 });
 
-// Create the model from the schema
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -10,20 +10,19 @@ const enrollmentRoutes = require('./routes/enrollment');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-
 const app = express();
 
 // Serve static files from the uploads directory
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Serve static files from the Vite build directory
-app.use(express.static(path.join(__dirname, '../client/dist')));
+// // Serve static files from the Vite build directory
+// app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+// });
 
-// Connect to the databases
+// Connect to the database
 connectDB();
 
 // Middleware
@@ -35,8 +34,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/gpt', gptRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api', enrollmentRoutes);
-
+app.use('/api/', enrollmentRoutes); // <-- Add this line
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

@@ -51,10 +51,10 @@ const StudentDashboard: React.FC = () => {
         ))}
       </div>
       <div className="dashboard-buttons">
-        <Link to="/enrolled-courses" className="btn btn-primary">
+        <Link to="/enrolled-courses" className="btn btn-primary left-button">
           View Enrolled Courses
         </Link>
-        <Link to="/chatgpt-recommendation" className="btn btn-primary">
+        <Link to="/chatgpt-recommendation" className="btn btn-primary right-button">
           Get Recommendation
         </Link>
       </div>

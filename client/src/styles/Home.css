@@ -1,16 +1,14 @@
-/* src/styles/Home.css */
-.home-container {
-    text-align: center;
-    margin: 2rem auto;
-  }
-  
-  .home-container h1 {
-    font-size: 2.5rem;
-    color: #333;
-  }
-  
-  .home-container p {
-    font-size: 1.25rem;
-    color: #666;
-  }
-  
+.enrolled-students table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.enrolled-students th, .enrolled-students td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.enrolled-students th {
+  background-color: #f4f4f4;
+}

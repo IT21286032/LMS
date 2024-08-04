@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 import '../../styles/CourseDetail.css';
 
 interface Course {
@@ -12,36 +13,47 @@ interface Course {
   content?: string;
 }
 
+interface DecodedToken {
+  user: {
+    id: string;
+    role: string;
+  };
+}
+
 const CourseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<Course | null>(null);
-  const [isEnrolled, setIsEnrolled] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');
 
-  const userId = 'USER_ID'; 
+  const token = localStorage.getItem('token');
+  let userId = '';
+
+  if (token) {
+    try {
+      const decodedToken = jwtDecode<DecodedToken>(token);
+      userId = decodedToken.user.id;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+    }
+  }
+
   useEffect(() => {
     const fetchCourse = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/courses/${id}`);
         setCourse(response.data);
-
-        // Check if the student is already enrolled
-        const enrolledCoursesResponse = await axios.get(`http://localhost:5000/api/enrolled-courses/${userId}`);
-        const enrolledCourses = enrolledCoursesResponse.data;
-        setIsEnrolled(enrolledCourses.some((course: Course) => course._id === id));
       } catch (err) {
         setError('Failed to fetch course details.');
       }
     };
 
     if (id) fetchCourse();
-  }, [id, userId]);
+  }, [id]);
 
   const handleEnroll = async () => {
     try {
       await axios.post('http://localhost:5000/api/enroll', { userId, courseId: id });
-      setIsEnrolled(true);
       setSuccess('Successfully enrolled in the course!');
     } catch (err) {
       setError('Failed to enroll in the course.');
@@ -54,7 +66,7 @@ const CourseDetail: React.FC = () => {
     <div className="course-detail">
       {error && <div className="error">{error}</div>}
       {success && <div className="success">{success}</div>}
-      <h2>{course.title } By {course.instructor}</h2>
+      <h2>{course.title} </h2>
 
       {course.displayPicture && (
         <img
@@ -70,11 +82,7 @@ const CourseDetail: React.FC = () => {
           <p>{course.content}</p>
         </div>
       )}
-      {!isEnrolled ? (
-        <button onClick={handleEnroll} className="btn btn-primary">Enroll</button>
-      ) : (
-        <p>You are already enrolled in this course.</p>
-      )}
+      <button onClick={handleEnroll} className="btn btn-primary">Enroll</button>
     </div>
   );
 };

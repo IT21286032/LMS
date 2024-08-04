@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 import '../../styles/EnrolledCourses.css';
 
 interface Course {
@@ -12,10 +13,28 @@ interface Course {
   content?: string;
 }
 
+interface DecodedToken {
+  user: {
+    id: string;
+    role: string;
+  };
+}
+
 const EnrolledCourses: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [error, setError] = useState<string>('');
-  const userId = 'USER_ID'; 
+
+  const token = localStorage.getItem('token');
+  let userId = '';
+
+  if (token) {
+    try {
+      const decodedToken = jwtDecode<DecodedToken>(token);
+      userId = decodedToken.user.id;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+    }
+  }
 
   useEffect(() => {
     const fetchEnrolledCourses = async () => {

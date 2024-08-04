@@ -1,10 +1,15 @@
+const mongoose = require('mongoose');
 const Enrollment = require('../models/Enrollment');
 const Course = require('../models/Course');
-const User=require('../models/User')
+const User = require('../models/User');
 
 // Enroll a user in a course
 exports.enrollUser = async (req, res) => {
   const { userId, courseId } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(courseId)) {
+    return res.status(400).json({ message: 'Invalid userId or courseId.' });
+  }
 
   try {
     // Check if the user is already enrolled
@@ -22,6 +27,7 @@ exports.enrollUser = async (req, res) => {
 
     res.status(201).json({ message: 'User enrolled successfully!' });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Failed to enroll user.' });
   }
 };
@@ -30,6 +36,10 @@ exports.enrollUser = async (req, res) => {
 exports.getEnrolledCourses = async (req, res) => {
   const { userId } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json({ message: 'Invalid userId.' });
+  }
+
   try {
     const enrollments = await Enrollment.find({ userId });
     const courseIds = enrollments.map(enrollment => enrollment.courseId);
@@ -37,6 +47,7 @@ exports.getEnrolledCourses = async (req, res) => {
 
     res.json(courses);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Failed to fetch enrolled courses.' });
   }
 };
@@ -45,13 +56,20 @@ exports.getEnrolledCourses = async (req, res) => {
 exports.getEnrolledStudents = async (req, res) => {
   const { courseId } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(courseId)) {
+    return res.status(400).json({ message: 'Invalid courseId.' });
+  }
+
   try {
     const enrollments = await Enrollment.find({ courseId });
     const userIds = enrollments.map(enrollment => enrollment.userId);
 
     // Optionally, you could get user details if needed
-    res.json(userIds);
+    const students = await User.find({ _id: { $in: userIds } });
+
+    res.json(students);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Failed to fetch enrolled students.' });
   }
 };
