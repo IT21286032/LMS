@@ -16,11 +16,11 @@ const app = express();
 // Serve static files from the uploads directory
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../../client/build')));
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 // Connect to the database
