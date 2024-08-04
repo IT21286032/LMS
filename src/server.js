@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
-// Connect to the database
+// Connect to the databases
 connectDB();
 
 // Middleware
